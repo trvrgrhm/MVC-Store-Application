@@ -2,14 +2,17 @@
 ## Project Description
 This is a ASP.NET Core MVC project utilizing Entity Framework Core to create a Web Store Application that allows a user to create an account then view orders by user and store location. The user can create an order, view their order history, and view the order history of a store location. It also allows administrators to view store location inventories and add products to inventories.
 ## Technologies Used
-* ASP.NET MVC Framework
+* ASP.NET MVC 5.2.7
 * .NET 5
 * Entity Framework 5.0.2 
 ## Features
-* Customers can ...
-* Administrators can...
+* Customers can view store inventories.
+* Customers can add multiple items to their carts.
+* Customers can checkout and view past orders.
+* Administrators can create store locations.
+* Administrators can add products to store location inventories.
 To-do list
-* Thing 1
+* Update styling
 ## Getting Started
 (include git clone command)
 (include all environment setup steps)
