@@ -14,13 +14,17 @@ This is a ASP.NET Core MVC project utilizing Entity Framework Core to create a W
 To-do list
 * Update styling
 ## Getting Started
-(include git clone command)
-(include all environment setup steps)
-> Be sure to include BOTH Windows and Unix command  
-> Be sure to mention if the commands only work on a specific platform (eg. AWS, GCP)
-- All the `code` required to get started
-- Images of what it should look like
+Open a command prompt in the directory where you want to create the project.
+Use the command `git clone https://github.com/trvrgrhm/MVC-Store-Application.git` to download the project.
+Install Visual Studio to open the solution.
+Also install SQL server on your computer.
+Open MvcStoreApplication/MvcStoreApplicatoin.sln in visual studio.
+Update the connection string in the StoreDbContext class in the RepositoryLayer Project.
+Open Visual Studio's Package Manager Console (PMC). In the PMC, run `update-database` to add the migrations to the database in your connection string.
+After you have a database, you can run the development version of the project using IIS.
+If you click the Play button at the top of the window, Visual Studio will build and run the program.
 ## Usage
-> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
+Before running the application, you need to create an administrator account.
+After running the application, you can login with the administrator account to create store locations and add products to their inventories.
 ## License
 This project uses the following license: MIT License
