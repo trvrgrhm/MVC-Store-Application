@@ -26,5 +26,7 @@ To-do list
 ## Usage
 Before running the application, you need to create an administrator account.
 After running the application, you can login with the administrator account to create store locations and add products to their inventories.
+After store locations have inventories, you can sign out of the administrator account, and create a customer account.
+When logged in as a customer, you can add items to your cart, checkout, and view past orders.
 ## License
 This project uses the following license: MIT License
