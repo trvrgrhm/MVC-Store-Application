@@ -16,11 +16,5 @@ namespace RepositoryLayer
 
         public StoreDbContext() { }
         public StoreDbContext(DbContextOptions options) : base(options) { }
-
-
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options){
-            options.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=StoreApplicationP1;Trusted_Connection=True;");
-        }
     }
 }

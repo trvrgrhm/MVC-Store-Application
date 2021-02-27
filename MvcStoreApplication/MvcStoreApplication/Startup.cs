@@ -2,6 +2,7 @@ using BusinessLogicLayer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,12 +27,14 @@ namespace MvcStoreApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddScoped<StoreDbContext>();
+
+
+            services.AddDbContext<StoreDbContext>(options=>options.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=StoreApplicationP1;Trusted_Connection=True;"));
             services.AddScoped<Repository>();
             services.AddScoped<BusinessLogic>();
             services.AddScoped<Mapper>();
-            services.AddSession();
 
+            services.AddSession();
             services.AddHttpContextAccessor();
         }
 
