@@ -19,6 +19,11 @@ namespace BusinessLogicLayer
         }
 
         //admin
+        /// <summary>
+        /// Converts an Administrator to a viewmodel
+        /// </summary>
+        /// <param name="admin"></param>
+        /// <returns></returns>
         public AdministratorViewModel ConvertAdministratorToAdministratorViewModel(Administrator admin)
         {
             AdministratorViewModel adminViewModel = new AdministratorViewModel()
@@ -32,6 +37,11 @@ namespace BusinessLogicLayer
             };
             return adminViewModel;
         }
+        /// <summary>
+        /// Converts an administrator viewmodel into an Administrator
+        /// </summary>
+        /// <param name="administratorViewModel"></param>
+        /// <returns></returns>
         public Administrator ConvertAdministratorViewModelToAdministrator(AdministratorViewModel administratorViewModel)
         {
             Administrator admin = new Administrator()
@@ -45,8 +55,7 @@ namespace BusinessLogicLayer
             };
             return admin;
         }
-
-
+        
         //customer
         /// <summary>
         /// Converts a customer model to a customer viewmodel
@@ -89,6 +98,7 @@ namespace BusinessLogicLayer
             return customer;
         }
 
+        //inventory
         /// <summary>
         /// Converts inventory model to inventory viewmodel
         /// </summary>
@@ -131,6 +141,7 @@ namespace BusinessLogicLayer
             return inventory;
         }
 
+        //product
         /// <summary>
         /// Converts a product viewmodel into a model and returns it
         /// </summary>
@@ -164,7 +175,7 @@ namespace BusinessLogicLayer
             return productViewModel;
         }
 
-
+        //location
         /// <summary>
         /// Converts location model to location viewmodel
         /// </summary>
@@ -180,6 +191,11 @@ namespace BusinessLogicLayer
             };
             return locationViewModel;
         }
+        /// <summary>
+        /// Converts location viewmodel to Location
+        /// </summary>
+        /// <param name="locationViewModel"></param>
+        /// <returns></returns>
         public Location ConvertLocationViewModelToLocation(LocationViewModel locationViewModel)
         {
             Location location = new Location()
@@ -190,6 +206,13 @@ namespace BusinessLogicLayer
             };
             return location;
         }
+
+        //orderline
+        /// <summary>
+        /// Converts orderline viewmodel to OrderLine
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
         public OrderLine ConvertOrderLineViewModelToOrderLine(OrderLineViewModel viewModel)
         {
             if(viewModel == null)
@@ -213,7 +236,11 @@ namespace BusinessLogicLayer
             }
             return line;
         }
-
+        /// <summary>
+        /// Converts OrderLine to orderline viewmodel.
+        /// </summary>
+        /// <param name="orderLine"></param>
+        /// <returns></returns>
         public OrderLineViewModel ConvertOrderLineToOrderLineViewModel(OrderLine orderLine)
         {
 
@@ -226,7 +253,7 @@ namespace BusinessLogicLayer
             var inventory = _repository.GetInventoryById(orderLine.Inventory.InventoryId);
             if (inventory != null)
             {
-                viewModel.StoreName = inventory.Location.Name;
+                
                 viewModel.InventoryId = orderLine.Inventory.InventoryId;
 
                 var product = inventory.Product;
@@ -239,35 +266,13 @@ namespace BusinessLogicLayer
                 }
                 if (loc != null)
                 {
-
+                    viewModel.StoreName = inventory.Location.Name;
                 }
 
             }
             return viewModel;
 
         }
-
-        //public OrderViewModel ConvertOrderToOrderViewModel(Order order)
-        //{
-        //    var viewModel = new OrderViewModel()
-        //    {
-        //        OrderId = order.OrderId,
-        //        Date = order.Date,
-        //        orderLines = _repository.GetOrderLinesForOrder(order.OrderId),
-        //    };
-        //    return viewModel;
-        //}
     }
-
-    
-    //public OrderViewModel ConvertOrderToOrderViewModel(Order order)
-    //{
-    //    OrderViewModel viewModel= new OrderViewModel()
-    //    {
-
-    //    };
-    //    return viewModel;
-
-    //}
 
 }
