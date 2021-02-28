@@ -623,14 +623,14 @@ namespace BusinessLogicLayer
         #endregion
 
 
-        //--------------------------------------------------------------Remember to delete this method please-----------------------------------------------------------
+        //--------------------------------------------------------------Temporary method for db population-----------------------------------------------------------
         /// <summary>
         /// used to populate db; shouldn't need this more than once
         /// </summary>
-        public void TempMethodDeleteMePlease()
-        {
-            _repository.PopulateDb();
-        }
+        //public void TempMethodDeleteMePlease()
+        //{
+        //    _repository.PopulateDb();
+        //}
 
 
     }

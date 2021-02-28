@@ -505,64 +505,46 @@ namespace RepositoryLayer
         }
 
         #endregion
+
         /// <summary>
         /// used to populate the db if it is empty
         /// </summary>
-        public void PopulateDb()
-        {
-            if (_dbContext.Locations.Count() < 1)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    Location newLocation = new Location()
-                    {
-                        Name = $"Store + {i}"
-                    };
-                    AttemptAddLocationToDb(newLocation);
-                }
-            }
-            if (_dbContext.Products.Count() < 1)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    Product product = new Product()
-                    {
-                        ProductName = $"Product {i}",
-                        Price = i + 1,
-                        Description = "Something Special"
-                    };
-                    AttemptAddProductToDb(product);
-                }
-            }
-            //Product newProduct = new Product()
-            //{
-            //    ProductName = $"Sandwich",
-            //    Price = 4.65,
-            //    Description = "A sandwich with ham, lettuce, tomato, and mayo."
-            //};
-            //AttemptAddProductToDb(newProduct);
-            // newProduct = new Product()
-            //{
-            //    ProductName = $"Hammer",
-            //    Price = 18.93,
-            //    Description = "A tool that is used to whack various other objects.",
-            //};
-            //AttemptAddProductToDb(newProduct);
-            //restock stores
-            if (_dbContext.Inventories.Count() < 1)
-            {
-                foreach (Location store in _dbContext.Locations.ToList())
-                {
-                    //var storeInv = _dbContext.Inventories.Include(x=>x.Location).Select(x => x.Location.Equals(store)).ToList();
-                    //if (storeInv.Count() < 1)
-                // Store.Inventorys.Count()<1){
-                    foreach (Product product in _dbContext.Products.ToList())
-                    {
-                        AttemptAddProductToStore(product, store, 10);
-                    }
-                }
-            }
-            //}
-        }
+        //public void PopulateDb()
+        //{
+        //    if (_dbContext.Locations.Count() < 1)
+        //    {
+        //        for (int i = 0; i < 3; i++)
+        //        {
+        //            Location newLocation = new Location()
+        //            {
+        //                Name = $"Store + {i}"
+        //            };
+        //            AttemptAddLocationToDb(newLocation);
+        //        }
+        //    }
+        //    if (_dbContext.Products.Count() < 1)
+        //    {
+        //        for (int i = 0; i < 3; i++)
+        //        {
+        //            Product product = new Product()
+        //            {
+        //                ProductName = $"Product {i}",
+        //                Price = i + 1,
+        //                Description = "Something Special"
+        //            };
+        //            AttemptAddProductToDb(product);
+        //        }
+        //    }
+        //    if (_dbContext.Inventories.Count() < 1)
+        //    {
+        //        foreach (Location store in _dbContext.Locations.ToList())
+        //        {
+        //            foreach (Product product in _dbContext.Products.ToList())
+        //            {
+        //                AttemptAddProductToStore(product, store, 10);
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
