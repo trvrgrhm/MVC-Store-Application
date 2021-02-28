@@ -17,8 +17,8 @@ namespace Models.ViewModels
         [Display(Name = "Username")]
         public string Username { get; set; }
 
-        [StringLength(40, MinimumLength = 5, ErrorMessage = "The password must be between 5 and 40 characters.")]
-        [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Use letters and numbers only please")]
+        [StringLength(40, MinimumLength = 8, ErrorMessage = "The password must be between 8 and 40 characters.")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$", ErrorMessage = "Please include at least one uppercase letter, one lowercase letter, one number, and one special character.")]
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
