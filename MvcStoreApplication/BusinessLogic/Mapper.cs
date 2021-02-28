@@ -118,7 +118,7 @@ namespace BusinessLogicLayer
                 Price = inventory.Product.Price,
                 Description = inventory.Product.Description,
                 //location stuff
-                LocationName = inventory.Product.ProductName         
+                LocationName = inventory.Location.Name         
             };
             return inventoryViewModel;
         }
