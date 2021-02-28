@@ -99,6 +99,7 @@ namespace BusinessLogicLayer.Tests
                 Assert.Equal(cust.Fname, result.Fname);
                 Assert.Equal(cust.LName, result.LName);
                 Assert.Equal(cust.DefaultLocation.LocationId, result.DefaultLocationId);
+                Assert.Equal(cust.DefaultLocation.Name, result.DefaultStoreName);
             }
         }
         [Fact]
@@ -126,7 +127,8 @@ namespace BusinessLogicLayer.Tests
                     Password = "cLev3rPas$word",
                     Fname = "First",
                     LName = "Last",
-                    DefaultLocationId = location.LocationId
+                    DefaultLocationId = location.LocationId,
+                    DefaultStoreName = location.Name
                 };
                 context.Locations.Add(location);
                 context.SaveChanges();
@@ -139,6 +141,7 @@ namespace BusinessLogicLayer.Tests
                 Assert.Equal(customerViewModel.Fname, result.Fname);
                 Assert.Equal(customerViewModel.LName, result.LName);
                 Assert.Equal(customerViewModel.DefaultLocationId, result.DefaultLocation.LocationId);
+                Assert.Equal(customerViewModel.DefaultStoreName, result.DefaultLocation.Name);
             }
         }
         //inventory

@@ -75,7 +75,8 @@ namespace BusinessLogicLayer
                 Password = customer.Password,
                 Fname = customer.Fname,
                 LName = customer.LName,
-                DefaultLocationId = customer.DefaultLocation.LocationId
+                DefaultLocationId = customer.DefaultLocation.LocationId,
+                DefaultStoreName = customer.DefaultLocation.Name
             };
             return customerViewModel;
         }
