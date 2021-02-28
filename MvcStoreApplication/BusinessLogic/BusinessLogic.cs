@@ -214,7 +214,22 @@ namespace BusinessLogicLayer
 
         #region products
         //products
-        public List<InventoryViewModel> GetInventoryModelsForLocation(Guid locationId)
+        /// <summary>
+        /// Attempts to add a new product to the db based on the given product viewmodel. Returns true if successful and false if not.
+        /// </summary>
+        /// <param name="productViewModel"></param>
+        /// <returns></returns>
+        public bool CreateNewProduct(ProductViewModel productViewModel)
+        {
+            var product = _mapper.ConvertProductViewModelToProduct(productViewModel);
+            return _repository.AttemptAddProductToDb(product);
+        }
+        /// <summary>
+        /// Returns a list of inventory viewmodels for all inventories related to location related to the the given location id.
+        /// </summary>
+        /// <param name="locationId"></param>
+        /// <returns></returns>
+        public List<InventoryViewModel> GetInventoryViewModelsForLocation(Guid locationId)
         {
             List<Inventory> locationInventories = _repository.GetLocationInventories(locationId);
             List<InventoryViewModel> inventoryViewModels = new List<InventoryViewModel>();
@@ -224,14 +239,6 @@ namespace BusinessLogicLayer
                 inventoryViewModels.Add(inventoryViewModel);
             }
             return inventoryViewModels;
-        }
-        public List<InventoryViewModel> GetInventoryModelsForCurrentLocation()
-        {
-            //if (currentLocationId != null)
-            if (SessionGetCurrentLocation() != null)
-                //return GetInventoryModelsForLocation((Guid)currentLocationId);
-                return GetInventoryModelsForLocation((Guid)SessionGetCurrentLocation());
-            else return GetInventoryModelsForLocation(_repository.GetDefautLocation().LocationId);
         }
         /// <summary>
         /// Returns a list of viewmodels based on all of the products in the db
@@ -274,7 +281,7 @@ namespace BusinessLogicLayer
             {
                 location = _repository.GetDefautLocation();
             }
-            List<InventoryViewModel> inventory = GetInventoryModelsForLocation(locationId);
+            List<InventoryViewModel> inventory = GetInventoryViewModelsForLocation(locationId);
             LocationWithInventoriesViewModel locationInventory = new LocationWithInventoriesViewModel()
             {
                 LocationId = location.LocationId,
