@@ -162,41 +162,11 @@ namespace RepositoryLayer.Tests
         public void AttemptAddCustomerToDb_Successful(Customer customer)
         {
             //Arrange
-            var options = new DbContextOptionsBuilder<StoreDbContext>()
-            .UseInMemoryDatabase(databaseName: "repoTestDb")
-            .Options;
+            var options = SetUpDbWithAdminAndCustomer();
             using (var context = new StoreDbContext(options))
             {
-                context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
                 var repo = new Repository(context);
-                var location = new Location()
-                {
-                    LocationId = Guid.NewGuid(),
-                    Name = "Location 1"
-                };
-                var admin = new Administrator()
-                {
-                    UserId = Guid.NewGuid(),
-                    Username = "admin",
-                    Password = "cLev3rPas$word",
-                    Fname = "First",
-                    LName = "Last",
-                    Acesslevel = AdminAccessLevel.EditAccess
-                };
-                var dbCustomer = new Customer()
-                {
-                    UserId = Guid.NewGuid(),
-                    Username = "customer",
-                    Password = "cLev3rPas$word",
-                    Fname = "First",
-                    LName = "Last",
-                    DefaultLocation = location
-                };
-                context.Locations.Add(location);
-                context.Administrators.Add(admin);
-                context.Customers.Add(dbCustomer);
-                context.SaveChanges();
                 //Act
                 var result = repo.AttemptAddCustomerToDb(customer);
                 //Assert
@@ -222,6 +192,10 @@ namespace RepositoryLayer.Tests
             }
         }
 
+        /// <summary>
+        /// creates a DbContextOptions
+        /// </summary>
+        /// <returns></returns>
         public DbContextOptions<StoreDbContext> SetUpDbWithAdminAndCustomer(){
             var options = new DbContextOptionsBuilder<StoreDbContext>()
             .UseInMemoryDatabase(databaseName: "repoTestDb")
